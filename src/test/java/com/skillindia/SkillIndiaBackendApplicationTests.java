@@ -12,6 +12,8 @@ public class SkillIndiaBackendApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
+	
+	
 
 }
 
