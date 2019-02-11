@@ -13,8 +13,12 @@ public class EstablishmentService {
 	private EstablishmentRepository impl;
 	
 	public void addEstablishment(Establishment est) {
-			//impl.addEstablishment(est);
 			impl.save(est);
+	}
+	
+	public Establishment login(String username , String Password) {
+		Establishment est = impl.findByEstUserIdAndEstUserPassword(username, Password);
+		return est;
 	}
 
 }

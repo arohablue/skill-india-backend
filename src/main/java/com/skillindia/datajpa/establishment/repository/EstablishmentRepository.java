@@ -1,5 +1,7 @@
 package com.skillindia.datajpa.establishment.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -12,5 +14,6 @@ public interface EstablishmentRepository extends CrudRepository<Establishment, L
 	Establishment findByestEmaiIId(Long id);
 	Establishment findByEstUserIdAndEstUserPassword( 
 			@Param("EstUserId") String EstUserId, @Param("EstUserPassword") String EstPassword);
-     
+	List<Establishment> findByDomain(String domain);
+	
 }
