@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.skillindia.datajpa.establishment.repository.Establishment;
+import com.skillindia.datajpa.establishment.model.Establishment;
 import com.skillindia.datajpa.establishment.service.EstablishmentService;
 
 @Controller
