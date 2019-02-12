@@ -18,7 +18,8 @@ public class CandidateService {
 	}
 	
 	public Candidate login(String username , String Password) {
-		Candidate candidate = impl.findBycandidateUserIdAndCandidateNewPassword(username, Password);
+		Candidate candidate = impl.findBycandidateEmaiIIdAndCandidateNewPassword(username, Password);
+	
 		return candidate;
 	}
 

@@ -38,11 +38,12 @@ public class CandidateController {
 	@RequestMapping(value = "/loginCandidate", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
-	public String loginCandidate( @RequestParam(name="username",required=false) String username , @RequestParam(name="password",required=false) String password) {
+	public String loginCandidate( @RequestParam(name="username") String username ,
+			@RequestParam(name="password") String password) {
 		if(candidateService.login(username, password) != null) {
 			return "1";
 		}
 		return "0";
 	} 
-
+	//,required=false  try this also
 }

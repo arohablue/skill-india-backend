@@ -13,8 +13,9 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long>{
 	
 	Candidate findBycandidateUserId(Long id);
 	Candidate findBycandidateEmaiIId(Long id);
-	Candidate findBycandidateUserIdAndCandidateNewPassword( 
-			@Param("candidateUserId") String candidateUserId, @Param("candidateNewPassword") String candidateNewPassword);
+	
+	Candidate findBycandidateEmaiIIdAndCandidateNewPassword( 
+			@Param("candidateEmaiIId") String candidateUserId, @Param("candidateNewPassword") String candidateNewPassword);
 	//List<Candidate> findByDomain(String domain);
 
 }
