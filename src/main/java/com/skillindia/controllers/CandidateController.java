@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.skillindia.datajpa.candidateModel.Candidate;
-import com.skillindia.datajpa.candidateService.CandidateService;
+import com.skillindia.datajpa.candidate.candidateModel.Candidate;
+import com.skillindia.datajpa.candidate.candidateService.CandidateService;
+
+
 
 @Controller
 public class CandidateController {

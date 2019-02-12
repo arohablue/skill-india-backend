@@ -1,4 +1,4 @@
-package com.skillindia.datajpa.candidateModel;
+package com.skillindia.datajpa.candidate.candidateModel;
 
 import java.io.Serializable;
 import java.sql.Date;
