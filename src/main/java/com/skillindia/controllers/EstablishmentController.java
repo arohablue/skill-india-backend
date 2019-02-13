@@ -38,5 +38,20 @@ public class EstablishmentController {
 			return "1";
 		}
 		return "0";
+<<<<<<< HEAD
+	} 
+	
+	@RequestMapping(value = "/dashboardEstablishment", method = RequestMethod.POST)
+	@CrossOrigin
+	@ResponseBody
+	public String dashboardEstablishment(@RequestBody Establishment est) {
+		System.out.println(est.getEstName());
+		System.out.println(est.getEstId());
+		System.out.println("hitted");
+		esService.dashboardDetails(est);
+		
+		return "records Fetched successfully";
+=======
+>>>>>>> develop
 	}
 }
