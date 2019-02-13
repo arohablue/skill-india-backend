@@ -22,16 +22,14 @@ public class Candidate implements Serializable{
 		
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
+		@Column(unique=true)
 		private int candidateUserId;
-		
-//		@Column(unique=true)
-//		private String estUserId;
 		
 		private String candidateName;
 		
-		private String candidateFatersName;
+		private String candidateFatherName;
 		
-		private String candidateNewPassword;
+		private String candidatePassword;
 		
 		
 		@Column
@@ -41,9 +39,11 @@ public class Candidate implements Serializable{
 
 		private String candidateGender;
 		
-		private String candidateAdharNumber;
+		@Column(unique=true)
+		private String candidateAadharNumber;
 		
-		private String candidateEmaiIId;
+		@Column(unique=true)
+		private String candidateEmail;
 		
 		private String candidateEducationDetails;
 		
@@ -52,6 +52,30 @@ public class Candidate implements Serializable{
 		private String candidateRequestStatus="PENDING";
 		
 		private String candidateCourseStatus;
+		
+		public String getCandidateFatherName() {
+			return candidateFatherName;
+		}
+
+		public void setCandidateFatherName(String candidateFatherName) {
+			this.candidateFatherName = candidateFatherName;
+		}
+
+		public String getCandidatePassword() {
+			return candidatePassword;
+		}
+
+		public void setCandidatePassword(String candidatePassword) {
+			this.candidatePassword = candidatePassword;
+		}
+
+		public String getCandidateAadharNumber() {
+			return candidateAadharNumber;
+		}
+
+		public void setCandidateAadharNumber(String candidateAadharNumber) {
+			this.candidateAadharNumber = candidateAadharNumber;
+		}
 
 		public int getCandidateUserId() {
 			return candidateUserId;
@@ -69,30 +93,6 @@ public class Candidate implements Serializable{
 			this.candidateName = candidateName;
 		}
 
-		public String getCandidateFatersName() {
-			return candidateFatersName;
-		}
-
-		public void setCandidateFatersName(String candidateFatersName) {
-			this.candidateFatersName = candidateFatersName;
-		}
-		
-		public String getCandidateAdharNumber() {
-			return candidateAdharNumber;
-		}
-
-		public void setCandidateAdharNumber(String candidateAdharNumber) {
-			this.candidateAdharNumber = candidateAdharNumber;
-		}
-
-		public String getCandidateNewPassword() {
-			return candidateNewPassword;
-		}
-
-		public void setCandidateNewPassword(String candidateNewPassword) {
-			this.candidateNewPassword = candidateNewPassword;
-		}
-
 		public String getCandidateContactNumber() {
 			return candidateContactNumber;
 		}
@@ -107,16 +107,6 @@ public class Candidate implements Serializable{
 
 		public void setCandidateGender(String candidateGender) {
 			this.candidateGender = candidateGender;
-		}
-
-		
-
-		public String getCandidateEmaiIId() {
-			return candidateEmaiIId;
-		}
-
-		public void setCandidateEmaiIId(String candidateEmaiIId) {
-			this.candidateEmaiIId = candidateEmaiIId;
 		}
 
 		public String getCandidateEducationDetails() {
@@ -154,17 +144,23 @@ public class Candidate implements Serializable{
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
+		
+		public String getCandidateEmail() {
+			return candidateEmail;
+		}
+
+		public void setCandidateEmail(String candidateEmail) {
+			this.candidateEmail = candidateEmail;
+		}
+
 		@Override
 		public String toString() {
-			return "Candidate [candidateUserId=" + candidateUserId 
-					+", candidateNewPassword=" + candidateNewPassword
-					+ ", candidateName=" + candidateName 
-					+", candidateFatersName=" + candidateFatersName
-					+ ", candidateContactNumber=" + candidateContactNumber
-					+ ", candidateAdharNumber=" + candidateAdharNumber 
-					+ ", candidateEmaiIId=" + candidateEmaiIId
-					+  ", candidateCourseStatus=" + candidateCourseStatus 
-					+", candidateDoB=" + candidateDoB+
-					", candidateRequestStatus=" +candidateRequestStatus+"]";
-}
+			return "Candidate [candidateUserId=" + candidateUserId + ", candidateName=" + candidateName
+					+ ", candidateFatherName=" + candidateFatherName + ", candidatePassword=" + candidatePassword
+					+ ", candidateContactNumber=" + candidateContactNumber + ", candidateGender=" + candidateGender
+					+ ", candidateAadharNumber=" + candidateAadharNumber + ", candidateEmail=" + candidateEmail
+					+ ", candidateEducationDetails=" + candidateEducationDetails + ", candidateDoB=" + candidateDoB
+					+ ", candidateRequestStatus=" + candidateRequestStatus + ", candidateCourseStatus="
+					+ candidateCourseStatus + "]";
+		}
 }

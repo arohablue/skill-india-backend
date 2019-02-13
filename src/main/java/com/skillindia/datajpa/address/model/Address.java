@@ -1,4 +1,4 @@
-package com.skillindia.datajpa.address.repository;
+package com.skillindia.datajpa.address.model;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

@@ -19,8 +19,9 @@ public class CandidateService {
 			impl.save(candidate);
 	}
 	
-	public Candidate login(String username , String Password) {
-		Candidate candidate = impl.findBycandidateUserIdAndCandidateNewPassword(username, Password);
+	public Candidate login(String userId, String password) {
+		Candidate candidate = impl.findBycandidateUserIdAndCandidatePassword(userId, password);
+	
 		return candidate;
 	}
 

@@ -1,6 +1,5 @@
 package com.skillindia.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,23 +24,21 @@ public class EstablishmentController {
 
 	@RequestMapping(value = "/addEstablishment", method = RequestMethod.POST)
 	@CrossOrigin
-	public String  addEstablishment(@RequestBody Establishment est) {
-		
-		System.out.println("hitted");
-		System.out.println(est.getEstContactNumber());
-		System.out.println(est);
+	public String addEstablishment(@RequestBody Establishment est) {
 		esService.addEstablishment(est);
 		return "records added successfully";
-	} 
-	
+	}
+
 	@RequestMapping(value = "/loginEstablishment", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
-	public String loginEstablishment( @RequestParam("username") String username , @RequestParam("password") String password) {
-		if(esService.login(username, password) != null) {
+	public String loginEstablishment(@RequestParam("username") String username,
+			@RequestParam("password") String password) {
+		if (esService.login(username, password) != null) {
 			return "1";
 		}
 		return "0";
+<<<<<<< HEAD
 	} 
 	
 	@RequestMapping(value = "/dashboardEstablishment", method = RequestMethod.POST)
@@ -54,5 +51,7 @@ public class EstablishmentController {
 		esService.dashboardDetails(est);
 		
 		return "records Fetched successfully";
+=======
+>>>>>>> develop
 	}
 }

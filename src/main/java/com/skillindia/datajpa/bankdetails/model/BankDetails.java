@@ -1,4 +1,4 @@
-package com.skillindia.datajpa.bankdetails.repository;
+package com.skillindia.datajpa.bankdetails.model;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
