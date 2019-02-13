@@ -9,39 +9,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.skillindia.datajpa.candidate.model.Candidate;
-import com.skillindia.datajpa.candidate.service.CandidateService;
+import com.skillindia.datajpa.admin.model.Admin;
+import com.skillindia.datajpa.admin.service.AdminService;
 
 
 @Controller
-public class CandidateController {
+public class AdminController {
 	
 	@Autowired
-	CandidateService candidateService;
+	AdminService adminService;
 	
-	public void setCandidateServiceObject(CandidateService candidateServiceObject) {
-		this.candidateService = candidateServiceObject;
+	public void setAdminServiceObject(AdminService adminServiceObject) {
+		this.adminService = adminServiceObject;
 	}
-	
-	@RequestMapping(value = "/addCandidate", method = RequestMethod.POST)
+	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
 	@CrossOrigin
-	public String  addCandidate (@RequestBody Candidate candidate) {
-		
-		System.out.println("hitted");
-		System.out.println(candidate.getCandidateContactNumber());
-		System.out.println(candidate);
-		candidateService.addCandidate(candidate);
+	public String  addCandidate (@RequestBody Admin admin) {
+		adminService.addAdmin(admin);
 		return "records added successfully";
 	}
 	
-	@RequestMapping(value = "/loginCandidate", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
 	public String loginCandidate( @RequestParam(name="username",required=false) String username , @RequestParam(name="password",required=false) String password) {
-		if(candidateService.login(username, password) != null) {
+		if(adminService.login(username, password) != null) {
 			return "1";
 		}
 		return "0";
 	} 
+
 
 }

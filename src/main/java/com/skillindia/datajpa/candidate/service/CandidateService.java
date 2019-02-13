@@ -1,10 +1,12 @@
-package com.skillindia.datajpa.candidate.candidateService;
+package com.skillindia.datajpa.candidate.service;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skillindia.datajpa.candidate.candidateModel.Candidate;
-import com.skillindia.datajpa.candidate.candidateRepository.CandidateRepository;
+import com.skillindia.datajpa.candidate.model.Candidate;
+import com.skillindia.datajpa.candidate.repository.CandidateRepository;
 
 
 @Service

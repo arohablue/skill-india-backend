@@ -17,8 +17,12 @@ public class EstablishmentService {
 	}
 	
 	public Establishment login(String username , String Password) {
-		Establishment est = impl.findByEstUserIdAndEstUserPassword(username, Password);
+		Establishment est = impl.findByestUserIdAndEstUserPassword(username, Password);
 		return est;
+	}
+
+	public void dashboardDetails(Establishment est) {
+		impl.findAll();
 	}
 
 }
