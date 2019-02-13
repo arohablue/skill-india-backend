@@ -16,8 +16,8 @@ public class EstablishmentService {
 			impl.save(est);
 	}
 	
-	public Establishment login(String username , String Password) {
-		Establishment est = impl.findByEstUserIdAndEstUserPassword(username, Password);
+	public Establishment login(String userId , String password) {
+		Establishment est = impl.findByEstUserIdAndEstUserPassword(userId, password);
 		return est;
 	}
 

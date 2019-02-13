@@ -36,9 +36,9 @@ public class Establishment implements Serializable{
 	
 	private String estRegNo;
 	
-	private String estEmaiIId;
+	private String estEmail;
 	
-	private int workingDays;
+	private int estWorkingDays;
 	
 	private String domain;
 	
@@ -105,22 +105,6 @@ public class Establishment implements Serializable{
 		this.estRegNo = estRegNo;
 	}
 
-	public String getEstEmaiIId() {
-		return estEmaiIId;
-	}
-
-	public void setEstEmaiIId(String estEmaiIId) {
-		this.estEmaiIId = estEmaiIId;
-	}
-
-	public int getWorkingDays() {
-		return workingDays;
-	}
-
-	public void setWorkingDays(int workingDays) {
-		this.workingDays = workingDays;
-	}
-
 	public String getDomain() {
 		return domain;
 	}
@@ -153,17 +137,36 @@ public class Establishment implements Serializable{
 		this.estAddress = estAddress;
 	}
 
+	public int getEstWorkingDays() {
+		return estWorkingDays;
+	}
+
+	public void setEstWorkingDays(int estWorkingDays) {
+		this.estWorkingDays = estWorkingDays;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Establishment [estId=" + estId + ", estUserId=" + estUserId + ", estUserPassword=" + estUserPassword
 				+ ", estName=" + estName + ", estContactNumber=" + estContactNumber + ", estType=" + estType
-				+ ", estRegNo=" + estRegNo + ", estEmaiIId=" + estEmaiIId + ", workingDays=" + workingDays + ", domain="
-				+ domain + ", appStatus=" + appStatus + ", estBankDetails=" + estBankDetails + ", estAddress="
-				+ estAddress + "]";
+				+ ", estRegNo=" + estRegNo + ", estEmaiI=" + estEmail + ", estWorkingDays=" + estWorkingDays
+				+ ", domain=" + domain + ", appStatus=" + appStatus + ", estBankDetails=" + estBankDetails
+				+ ", estAddress=" + estAddress + "]";
 	}
+
+	public String getEstEmail() {
+		return estEmail;
+	}
+
+	public void setEstEmail(String estEmail) {
+		this.estEmail = estEmail;
+	}
+	
+	
+	
 }
 
