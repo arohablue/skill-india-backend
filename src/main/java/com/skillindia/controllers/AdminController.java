@@ -32,7 +32,7 @@ public class AdminController {
 	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
-	public String loginCandidate( @RequestParam(name="username",required=false) String username , @RequestParam(name="password",required=false) String password) {
+	public String loginCandidate( @RequestParam(name="adminUserName",required=false) String username , @RequestParam(name="adminPassword",required=false) String password) {
 		if(adminService.login(username, password) != null) {
 			return "1";
 		}

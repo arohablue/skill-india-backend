@@ -1,12 +1,15 @@
-package com.skillindia.datajpa.address.repository;
+package com.skillindia.datajpa.address.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
+@Table(name="tbl_addressdetails")
+@Entity
 public class Address {
 
 	@Id
@@ -18,6 +21,13 @@ public class Address {
 	@Column
 	@NotEmpty(message = "Address cannot be empty")
 	private String localAddress;
+	
+	@Column
+	@NotEmpty(message = "City cannot be empty!")
+	private String city;
+
+	@Column
+	private String state;
 
 	public Address() {
 		super();
@@ -55,12 +65,7 @@ public class Address {
 		this.state = state;
 	}
 
-	@Column
-	@NotEmpty(message = "City cannot be empty!")
-	private String city;
-
-	@Column
-	private String state;
+	
 	
 	@Override
 	public String toString() {

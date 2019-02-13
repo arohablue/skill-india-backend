@@ -1,12 +1,19 @@
-package com.skillindia.datajpa.bankdetails.repository;
+package com.skillindia.datajpa.bankdetails.model;
+
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
-public class BankDetails {
+@Table(name="tbl_bankdetails")
+@Entity
+public class BankDetails implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	// declaration
