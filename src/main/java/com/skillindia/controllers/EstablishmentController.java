@@ -48,9 +48,6 @@ public class EstablishmentController {
 	@CrossOrigin
 	@ResponseBody
 	public String dashboardEstablishment(@RequestBody Establishment est) {
-		System.out.println(est.getEstName());
-		System.out.println(est.getEstId());
-		System.out.println("hitted");
 		esService.dashboardDetails(est);
 		
 		return "records Fetched successfully";
