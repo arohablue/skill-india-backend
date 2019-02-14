@@ -1,3 +1,5 @@
+package com.skillindia.controllers;
+
 
 
 import java.io.File;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillindia.datajpa.Document;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 @RestController
@@ -20,10 +23,10 @@ public class DocUplaodController {
 	@RequestMapping(path="/new", method=RequestMethod.POST, 
 					consumes="multipart/form-data",
 					produces="text/plain")
-	public String register(@RequestPart("customer") String Candidate,
+	public String upload(@RequestPart("document") String document,
 							@RequestPart("document") MultipartFile file) throws Exception {
 		
-		Candidate customer = new ObjectMapper().readValue(Candidate, Candidate.class); 
+		//Candidate customer = new ObjectMapper().readValue(Document, Document.class); 
 		//candidate.setDocument(file.getBytes());
 		
 		String uploadedFolderLocation = "";

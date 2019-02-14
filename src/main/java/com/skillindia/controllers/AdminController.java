@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skillindia.datajpa.admin.model.Admin;
 import com.skillindia.datajpa.admin.service.AdminService;
+import com.skillindia.datajpa.message.model.Message;
 
 
 @Controller
@@ -32,11 +33,11 @@ public class AdminController {
 	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
-	public String loginCandidate( @RequestParam(name="adminUserName",required=false) String username , @RequestParam(name="adminPassword",required=false) String password) {
+	public Message loginCandidate( @RequestParam(name="adminUserName",required=false) String username , @RequestParam(name="adminPassword",required=false) String password) {
 		if(adminService.login(username, password) != null) {
-			return "1";
+			return new Message("1");
 		}
-		return "0";
+		return new Message("0");
 	} 
 
 

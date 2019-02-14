@@ -1,6 +1,8 @@
 package com.skillindia.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.establishment.model.Establishment;
 import com.skillindia.datajpa.establishment.service.EstablishmentService;
+import com.skillindia.datajpa.message.model.Message;
 
 @Controller
+@CrossOrigin
 public class EstablishmentController {
 
 	@Autowired
@@ -24,32 +29,30 @@ public class EstablishmentController {
 	}
 
 	@RequestMapping(value = "/addEstablishment", method = RequestMethod.POST)
-	@CrossOrigin
-	public String  addEstablishment(@RequestBody Establishment est) {
-		
-		System.out.println("hitted");
-		System.out.println(est.getEstContactNumber());
-		System.out.println(est);
+	public Message  addEstablishment(@RequestBody Establishment est) {
 		esService.addEstablishment(est);
-		return "records added successfully";
+		return new Message("recordes added");
 	} 
 	
 	@RequestMapping(value = "/loginEstablishment", method = RequestMethod.GET)
-	@CrossOrigin
 	@ResponseBody
-	public String loginEstablishment( @RequestParam("username") String username , @RequestParam("password") String password) {
+	public Message loginEstablishment( @RequestParam("username") String username , @RequestParam("password") String password) {
 		if(esService.login(username, password) != null) {
-			return "1";
+			return new Message("1");
 		}
-		return "0";
+		return new Message("0");
 	} 
 	
-	@RequestMapping(value = "/dashboardEstablishment", method = RequestMethod.POST)
-	@CrossOrigin
+	@RequestMapping(value = "/establishmentList", method = RequestMethod.GET)
 	@ResponseBody
-	public String dashboardEstablishment(@RequestBody Establishment est) {
-		esService.dashboardDetails(est);
-		
-		return "records Fetched successfully";
+	public List<Establishment> establishmentList() {
+		return esService.getAllEstablishments();
+	}
+	
+	@RequestMapping(value = "/establishmentListByCandidate", method = RequestMethod.GET)
+	
+	@ResponseBody
+	public List<Establishment> establishmentListByCandidate(@RequestBody Candidate candidate) {
+		return esService.establishmentListByCandidate(candidate);
 	}
 }

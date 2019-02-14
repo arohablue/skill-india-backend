@@ -1,5 +1,7 @@
 package com.skillindia.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.candidate.service.CandidateService;
+import com.skillindia.datajpa.establishment.model.Establishment;
+import com.skillindia.datajpa.message.model.Message;
 
 @Controller
 public class CandidateController {
@@ -33,11 +37,18 @@ public class CandidateController {
 	@RequestMapping(value = "/loginCandidate", method = RequestMethod.GET)
 	@CrossOrigin
 	@ResponseBody
-	public String loginEstablishment(@RequestParam("username") String username,
+	public Message loginEstablishment(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
 		if (candidateService.login(username, password) != null) {
-			return "1";
+			return new Message("1");
 		}
-		return "0";
+		return new Message("0");
+	}
+	
+	@RequestMapping(value = "/candidateList", method = RequestMethod.GET)
+	@CrossOrigin
+	@ResponseBody
+	public List<Candidate> candidateListByEstablishment() {
+		return candidateService.candidateListByEstablishment();
 	}
 }

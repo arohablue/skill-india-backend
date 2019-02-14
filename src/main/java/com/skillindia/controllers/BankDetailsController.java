@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skillindia.datajpa.bankdetails.model.BankDetails;
 import com.skillindia.datajpa.bankdetails.service.BankDetailsService;
 import com.skillindia.datajpa.candidate.model.Candidate;
+import com.skillindia.datajpa.message.model.Message;
 
 @Controller
 public class BankDetailsController {
@@ -23,11 +24,11 @@ public class BankDetailsController {
 		
 		@RequestMapping(value = "/addBankDetails", method = RequestMethod.POST)
 		@CrossOrigin
-		public String  addCandidate (@RequestBody BankDetails bankdetails) {
+		public Message  addCandidate (@RequestBody BankDetails bankdetails) {
 			
 	
 			bankdetailsService.addDetails(bankdetails);
-			return "records added successfully";
+			return new Message("recordes added");
 		}
 		
 }

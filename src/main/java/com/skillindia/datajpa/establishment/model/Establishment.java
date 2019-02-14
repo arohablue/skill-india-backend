@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.skillindia.datajpa.candidate.model.Candidate;
+
 
 @Entity
 @Table(name = "tbl_establishment")
@@ -48,6 +50,7 @@ public class Establishment implements Serializable{
 	
 	private String estAddress;
 	
+	private Candidate candidate;
 	
 	public int getEstId() {
 		return estId;
