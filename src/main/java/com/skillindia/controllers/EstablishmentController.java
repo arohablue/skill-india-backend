@@ -22,7 +22,7 @@ public class EstablishmentController {
 	public void setEstablishmentServiceObject(EstablishmentService establishmentServiceObject) {
 		this.esService = establishmentServiceObject;
 	}
-
+	
 	@RequestMapping(value = "/addEstablishment", method = RequestMethod.POST)
 	@CrossOrigin
 	public String  addEstablishment(@RequestBody Establishment est) {
@@ -44,15 +44,4 @@ public class EstablishmentController {
 		return "0";
 	} 
 	
-	@RequestMapping(value = "/dashboardEstablishment", method = RequestMethod.POST)
-	@CrossOrigin
-	@ResponseBody
-	public String dashboardEstablishment(@RequestBody Establishment est) {
-		System.out.println(est.getEstName());
-		System.out.println(est.getEstId());
-		System.out.println("hitted");
-		esService.dashboardDetails(est);
-		
-		return "records Fetched successfully";
-	}
 }

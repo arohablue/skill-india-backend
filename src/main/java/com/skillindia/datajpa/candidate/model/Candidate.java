@@ -17,7 +17,9 @@ import javax.validation.constraints.Size;
 public class Candidate implements Serializable{
 	
 		private static final long serialVersionUID = 1L;
-		
+		@Column(unique=true)
+		private String candidateName;
+		private String candidatePassword;
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int candidateUserId;
@@ -25,13 +27,24 @@ public class Candidate implements Serializable{
 //		@Column(unique=true)
 //		private String estUserId;
 		
-		private String candidateName;
-		
 		private String candidateFatersName;
 		
-		private String candidateNewPassword;
-		
-		
+		public String getAccountName() {
+			return candidateName;
+		}
+
+		public void setAccountName(String candidateName) {
+			this.candidateName = candidateName;
+		}
+
+		public String getcandidatePassword() {
+			return candidatePassword;
+		}
+
+		public void setcandidatePassword(String candidatePassword) {
+			this.candidatePassword = candidatePassword;
+		}
+
 		@Column
 		@NotEmpty(message = "Phone Number cannot be empty!")
 		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
@@ -59,14 +72,7 @@ public class Candidate implements Serializable{
 			this.candidateUserId = candidateUserId;
 		}
 
-		public String getCandidateName() {
-			return candidateName;
-		}
-
-		public void setCandidateName(String candidateName) {
-			this.candidateName = candidateName;
-		}
-
+		
 		public String getCandidateFatersName() {
 			return candidateFatersName;
 		}
@@ -83,13 +89,7 @@ public class Candidate implements Serializable{
 			this.candidateAdharNumber = candidateAdharNumber;
 		}
 
-		public String getCandidateNewPassword() {
-			return candidateNewPassword;
-		}
-
-		public void setCandidateNewPassword(String candidateNewPassword) {
-			this.candidateNewPassword = candidateNewPassword;
-		}
+	
 
 		public String getCandidateContactNumber() {
 			return candidateContactNumber;
@@ -152,17 +152,18 @@ public class Candidate implements Serializable{
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
+
 		@Override
 		public String toString() {
-			return "Candidate [candidateUserId=" + candidateUserId 
-					+", candidateNewPassword=" + candidateNewPassword
-					+ ", candidateName=" + candidateName 
-					+", candidateFatersName=" + candidateFatersName
-					+ ", candidateContactNumber=" + candidateContactNumber
-					+ ", candidateAdharNumber=" + candidateAdharNumber 
-					+ ", candidateEmaiIId=" + candidateEmaiIId
-					+  ", candidateCourseStatus=" + candidateCourseStatus 
-					+", candidateDoB=" + candidateDoB+
-					", candidateRequestStatus=" +candidateRequestStatus+"]";
-}
+			return "Candidate [candidateName=" + candidateName + ", candidatePassword=" + candidatePassword
+					+ ", candidateUserId=" + candidateUserId + ", candidateFatersName=" + candidateFatersName
+					+ ", candidateContactNumber=" + candidateContactNumber + ", candidateGender=" + candidateGender
+					+ ", candidateAdharNumber=" + candidateAdharNumber + ", candidateEmaiIId=" + candidateEmaiIId
+					+ ", candidateEducationDetails=" + candidateEducationDetails + ", candidateDoB=" + candidateDoB
+					+ ", candidateRequestStatus=" + candidateRequestStatus + ", candidateCourseStatus="
+					+ candidateCourseStatus + "]";
+		}
+
+		
+		
 }
