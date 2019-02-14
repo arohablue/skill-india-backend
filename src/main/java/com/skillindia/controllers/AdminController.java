@@ -23,6 +23,7 @@ public class AdminController {
 	public void setAdminServiceObject(AdminService adminServiceObject) {
 		this.adminService = adminServiceObject;
 	}
+	
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
 	@CrossOrigin
 	public String  addCandidate (@RequestBody Admin admin) {

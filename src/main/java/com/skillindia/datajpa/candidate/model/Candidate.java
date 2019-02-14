@@ -25,11 +25,14 @@ public class Candidate implements Serializable{
 //		@Column(unique=true)
 //		private String estUserId;
 		
+		@Column(unique=true)
+		private int candidateUserName;
+		
 		private String candidateName;
 		
 		private String candidateFatersName;
 		
-		private String candidateNewPassword;
+		private String candidatePassword;
 		
 		
 		@Column
@@ -84,11 +87,11 @@ public class Candidate implements Serializable{
 		}
 
 		public String getCandidateNewPassword() {
-			return candidateNewPassword;
+			return candidatePassword;
 		}
 
 		public void setCandidateNewPassword(String candidateNewPassword) {
-			this.candidateNewPassword = candidateNewPassword;
+			this.candidatePassword = candidateNewPassword;
 		}
 
 		public String getCandidateContactNumber() {
@@ -155,7 +158,7 @@ public class Candidate implements Serializable{
 		@Override
 		public String toString() {
 			return "Candidate [candidateUserId=" + candidateUserId 
-					+", candidateNewPassword=" + candidateNewPassword
+					+", candidateNewPassword=" + candidatePassword
 					+ ", candidateName=" + candidateName 
 					+", candidateFatersName=" + candidateFatersName
 					+ ", candidateContactNumber=" + candidateContactNumber

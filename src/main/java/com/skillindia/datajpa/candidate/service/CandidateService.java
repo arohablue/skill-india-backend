@@ -22,7 +22,7 @@ public class CandidateService {
 	}
 	
 	public Candidate login(String username , String Password) {
-		Candidate candidate = candidateRepository.findBycandidateUserIdAndCandidateNewPassword(username, Password);
+		Candidate candidate = candidateRepository.findBycandidateUserNameAndCandidatePassword(username, Password);
 		return candidate;
 	}
 	
