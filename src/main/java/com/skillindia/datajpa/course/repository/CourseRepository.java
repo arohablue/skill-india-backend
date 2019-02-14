@@ -1,5 +1,7 @@
 package com.skillindia.datajpa.course.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.skillindia.datajpa.course.model.Course;
@@ -12,8 +14,6 @@ Course findByCourseDescription(String description);
 Course findByCourseDuration(Long duration);
 Course findByTraineeName(String Tname);
 Course findByCourseAmount(Long amount);
+List<Course> findAll();
 
 		}
-
-
-

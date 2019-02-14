@@ -12,7 +12,7 @@ public class SkillIndiaBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SkillIndiaBackendApplication.class, args);
-		System.out.println("hello");
+		System.out.println("Application started ");
 	}
 
 }

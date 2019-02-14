@@ -13,8 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
 import com.skillindia.datajpa.course.model.Course;
+import com.skillindia.datajpa.candidate.model.Candidate;
+
 
 
 @Entity
@@ -53,6 +54,7 @@ public class Establishment implements Serializable{
 	
 	private String estAddress;
 	
+
 	@OneToMany(mappedBy = "Establishment", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Course> course;
 	
@@ -63,6 +65,9 @@ public class Establishment implements Serializable{
     public Set<Course> getProducts(){
     	return this.course;
     }
+
+	private Candidate candidate;
+
 	
 	public int getEstId() {
 		return estId;

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skillindia.datajpa.address.model.Address;
 import com.skillindia.datajpa.address.service.AddressService;
+import com.skillindia.datajpa.message.model.Message;
 
 @Controller
 public class AddressController {
@@ -21,10 +22,10 @@ public class AddressController {
 		
 		@RequestMapping(value = "/addAddress", method = RequestMethod.POST)
 		@CrossOrigin
-		public String  addCandidate (@RequestBody Address address) {
+		public Message  addCandidate (@RequestBody Address address) {
 			
 			addressService.addAddress(address);
-			return "records added successfully";
+			return new Message("recordes added");
 		}
 		
 }
