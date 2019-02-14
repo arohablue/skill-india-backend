@@ -27,7 +27,7 @@ public class EstablishmentController {
 	public void setEstablishmentServiceObject(EstablishmentService establishmentServiceObject) {
 		this.esService = establishmentServiceObject;
 	}
-
+	
 	@RequestMapping(value = "/addEstablishment", method = RequestMethod.POST)
 	public Message  addEstablishment(@RequestBody Establishment est) {
 		esService.addEstablishment(est);

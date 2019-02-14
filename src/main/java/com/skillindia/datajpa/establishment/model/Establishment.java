@@ -1,15 +1,21 @@
 package com.skillindia.datajpa.establishment.model;
 import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
+import com.skillindia.datajpa.course.model.Course;
 import com.skillindia.datajpa.candidate.model.Candidate;
+
 
 
 @Entity
@@ -21,12 +27,10 @@ public class Establishment implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int estId;
-	
 	@Column(unique=true)
 	private String estUserId;
 	
 	private String estUserPassword;
-	
 	private String estName;
 	
 	@Column
@@ -50,7 +54,20 @@ public class Establishment implements Serializable{
 	
 	private String estAddress;
 	
+
+	@OneToMany(mappedBy = "Establishment", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Course> course;
+	
+	public void setProducts(Set<Course> Courses){
+    	this.course = Courses;
+    }
+    
+    public Set<Course> getProducts(){
+    	return this.course;
+    }
+
 	private Candidate candidate;
+
 	
 	public int getEstId() {
 		return estId;
@@ -58,6 +75,15 @@ public class Establishment implements Serializable{
 
 	public void setEstId(int estId) {
 		this.estId = estId;
+	}
+
+	
+	public String getEstName() {
+		return estName;
+	}
+
+	public void setEstName(String estName) {
+		this.estName = estName;
 	}
 
 	public String getEstUserId() {
@@ -74,14 +100,6 @@ public class Establishment implements Serializable{
 
 	public void setEstUserPassword(String estUserPassword) {
 		this.estUserPassword = estUserPassword;
-	}
-
-	public String getEstName() {
-		return estName;
-	}
-
-	public void setEstName(String estName) {
-		this.estName = estName;
 	}
 
 	public String getEstContactNumber() {
@@ -156,17 +174,26 @@ public class Establishment implements Serializable{
 		this.estAddress = estAddress;
 	}
 
+	public Establishment(String estUserId, String estUserPassword) {
+		super();
+		this.estUserId = estUserId;
+		this.estUserPassword = estUserPassword;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Establishment [estId=" + estId + ", estUserId=" + estUserId + ", estUserPassword=" + estUserPassword
 				+ ", estName=" + estName + ", estContactNumber=" + estContactNumber + ", estType=" + estType
 				+ ", estRegNo=" + estRegNo + ", estEmaiIId=" + estEmaiIId + ", workingDays=" + workingDays + ", domain="
 				+ domain + ", appStatus=" + appStatus + ", estBankDetails=" + estBankDetails + ", estAddress="
-				+ estAddress + "]";
+				+ estAddress + ", course=" + course + "]";
 	}
+
+	
+
 }
 

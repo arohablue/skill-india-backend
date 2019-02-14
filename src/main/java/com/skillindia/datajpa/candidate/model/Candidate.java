@@ -17,7 +17,9 @@ import javax.validation.constraints.Size;
 public class Candidate implements Serializable{
 	
 		private static final long serialVersionUID = 1L;
-		
+		@Column(unique=true)
+		private String candidateName;
+		private String candidatePassword;
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private int candidateUserId;
@@ -28,13 +30,21 @@ public class Candidate implements Serializable{
 		@Column(unique=true)
 		private int candidateUserName;
 		
-		private String candidateName;
-		
-		private String candidateFatersName;
-		
-		private String candidatePassword;
-		
-		
+		public String getAccountName() {
+			return candidateName;
+		}
+
+		public void setAccountName(String candidateName) {
+			this.candidateName = candidateName;
+		}
+
+		public String getcandidatePassword() {
+			return candidatePassword;
+		}
+
+		public void setcandidatePassword(String candidatePassword) {
+			this.candidatePassword = candidatePassword;
+		}
 		@Column
 		@NotEmpty(message = "Phone Number cannot be empty!")
 		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
@@ -62,21 +72,6 @@ public class Candidate implements Serializable{
 			this.candidateUserId = candidateUserId;
 		}
 
-		public String getCandidateName() {
-			return candidateName;
-		}
-
-		public void setCandidateName(String candidateName) {
-			this.candidateName = candidateName;
-		}
-
-		public String getCandidateFatersName() {
-			return candidateFatersName;
-		}
-
-		public void setCandidateFatersName(String candidateFatersName) {
-			this.candidateFatersName = candidateFatersName;
-		}
 		
 		public String getCandidateAdharNumber() {
 			return candidateAdharNumber;
@@ -84,14 +79,6 @@ public class Candidate implements Serializable{
 
 		public void setCandidateAdharNumber(String candidateAdharNumber) {
 			this.candidateAdharNumber = candidateAdharNumber;
-		}
-
-		public String getCandidateNewPassword() {
-			return candidatePassword;
-		}
-
-		public void setCandidateNewPassword(String candidateNewPassword) {
-			this.candidatePassword = candidateNewPassword;
 		}
 
 		public String getCandidateContactNumber() {
@@ -155,17 +142,8 @@ public class Candidate implements Serializable{
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
-		@Override
-		public String toString() {
-			return "Candidate [candidateUserId=" + candidateUserId 
-					+", candidateNewPassword=" + candidatePassword
-					+ ", candidateName=" + candidateName 
-					+", candidateFatersName=" + candidateFatersName
-					+ ", candidateContactNumber=" + candidateContactNumber
-					+ ", candidateAdharNumber=" + candidateAdharNumber 
-					+ ", candidateEmaiIId=" + candidateEmaiIId
-					+  ", candidateCourseStatus=" + candidateCourseStatus 
-					+", candidateDoB=" + candidateDoB+
-					", candidateRequestStatus=" +candidateRequestStatus+"]";
-}
+
+
+
+
 }

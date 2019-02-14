@@ -1,7 +1,14 @@
 package com.skillindia.datajpa.course.model;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name="tbl_course")
@@ -18,6 +25,10 @@ public class Course {
 	
 	private String traineeName;
 	private int courseAmount;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "courseId")
+    private Course course;
 	
 	public Course() {
 		super();
