@@ -29,7 +29,7 @@ public class CourseController {
 		@CrossOrigin
 		public Message  addCandidate (@RequestBody Course course) {
 			courseService.addCourse(course);
-			return new Message("recordes added");
+			return new Message("success");
 		}
 		
 		@RequestMapping(value = "/courseList", method = RequestMethod.GET)

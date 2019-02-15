@@ -26,9 +26,8 @@ public class BankDetailsController {
 		@CrossOrigin
 		public Message  addCandidate (@RequestBody BankDetails bankdetails) {
 			
-	
 			bankdetailsService.addDetails(bankdetails);
-			return new Message("recordes added");
+			return new Message("success");
 		}
 		
 }

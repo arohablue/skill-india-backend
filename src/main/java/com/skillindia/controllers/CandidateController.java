@@ -40,9 +40,9 @@ public class CandidateController {
 	public Message loginEstablishment(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
 		if (candidateService.login(username, password) != null) {
-			return new Message("1");
+			return new Message("success");
 		}
-		return new Message("0");
+		return new Message("failure");
 	}
 	
 	@RequestMapping(value = "/candidateList", method = RequestMethod.GET)
