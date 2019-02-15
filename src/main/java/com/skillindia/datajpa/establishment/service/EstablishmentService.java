@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-import com.skillindia.datajpa.establishment.Account.model.AccountEstablishment;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 import com.skillindia.datajpa.establishment.model.Establishment;

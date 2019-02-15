@@ -6,10 +6,6 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
-
-import com.skillindia.datajpa.establishment.Account.model.AccountEstablishment;
-
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 import com.skillindia.datajpa.establishment.model.Establishment;

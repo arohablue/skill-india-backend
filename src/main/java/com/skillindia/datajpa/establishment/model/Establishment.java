@@ -53,18 +53,6 @@ public class Establishment implements Serializable{
 	private String estBankDetails;
 	
 	private String estAddress;
-	
-
-	@OneToMany(mappedBy = "Establishment", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Course> course;
-	
-	public void setProducts(Set<Course> Courses){
-    	this.course = Courses;
-    }
-    
-    public Set<Course> getProducts(){
-    	return this.course;
-    }
 
 	private Candidate candidate;
 
@@ -183,17 +171,6 @@ public class Establishment implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	@Override
-	public String toString() {
-		return "Establishment [estId=" + estId + ", estUserId=" + estUserId + ", estUserPassword=" + estUserPassword
-				+ ", estName=" + estName + ", estContactNumber=" + estContactNumber + ", estType=" + estType
-				+ ", estRegNo=" + estRegNo + ", estEmaiIId=" + estEmaiIId + ", workingDays=" + workingDays + ", domain="
-				+ domain + ", appStatus=" + appStatus + ", estBankDetails=" + estBankDetails + ", estAddress="
-				+ estAddress + ", course=" + course + "]";
-	}
-
 	
-
 }
 

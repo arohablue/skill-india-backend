@@ -26,10 +26,6 @@ public class Course {
 	private String traineeName;
 	private int courseAmount;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "courseId")
-    private Course course;
-	
 	public Course() {
 		super();
 	}

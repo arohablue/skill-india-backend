@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.candidate.service.CandidateService;
-import com.skillindia.datajpa.establishment.model.Establishment;
 import com.skillindia.datajpa.message.model.Message;
 
 @Controller
