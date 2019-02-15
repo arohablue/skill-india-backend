@@ -1,6 +1,5 @@
 package com.skillindia.datajpa.establishment.model;
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,11 +8,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import com.skillindia.datajpa.course.model.Course;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.skillindia.datajpa.Account;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 
@@ -27,34 +29,42 @@ public class Establishment implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int estId;
-	@Column(unique=true)
-	private String estUserId;
 	
-	private String estUserPassword;
 	private String estName;
 	
-	@Column
-	@NotEmpty(message = "Phone Number cannot be empty!")
-	@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
-	private String estContactNumber;
+	 @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+	 @JoinColumn(name = "account_id")
+	 @JsonIgnore
+	 private Account account;
+	 
+	 @Column
+		@NotEmpty(message = "Phone Number cannot be empty!")
+		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
+		private String estContactNumber;
 
-	private String estType;
-	
-	private String estRegNo;
-	
-	private String estEmaiIId;
-	
-	private int workingDays;
-	
-	private String domain;
-	
-	private String appStatus="PENDING";
-	
-	private String estBankDetails;
-	
-	private String estAddress;
+		private String estType;
+		
+		private String estRegNo;
+		
+		private String estEmaiIId;
+		
+		private int workingDays;
+		
+		private String domain;
+		
+		private String appStatus="PENDING";
+		
+		private String estBankDetails;
+		
+		private String estAddress;
 
-	private Candidate candidate;
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
 	
 	public int getEstId() {
@@ -72,22 +82,6 @@ public class Establishment implements Serializable{
 
 	public void setEstName(String estName) {
 		this.estName = estName;
-	}
-
-	public String getEstUserId() {
-		return estUserId;
-	}
-
-	public void setEstUserId(String estUserId) {
-		this.estUserId = estUserId;
-	}
-
-	public String getEstUserPassword() {
-		return estUserPassword;
-	}
-
-	public void setEstUserPassword(String estUserPassword) {
-		this.estUserPassword = estUserPassword;
 	}
 
 	public String getEstContactNumber() {
@@ -162,15 +156,30 @@ public class Establishment implements Serializable{
 		this.estAddress = estAddress;
 	}
 
-	public Establishment(String estUserId, String estUserPassword) {
+	
+	public Establishment(int estId, String estUserId, String estUserPassword, String estName, Account account,
+			@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String estContactNumber,
+			String estType, String estRegNo, String estEmaiIId, int workingDays, String domain, String appStatus,
+			String estBankDetails, String estAddress, Candidate candidate) {
 		super();
-		this.estUserId = estUserId;
-		this.estUserPassword = estUserPassword;
+		this.estId = estId;
+		this.estName = estName;
+		this.account = account;
+		this.estContactNumber = estContactNumber;
+		this.estType = estType;
+		this.estRegNo = estRegNo;
+		this.estEmaiIId = estEmaiIId;
+		this.workingDays = workingDays;
+		this.domain = domain;
+		this.appStatus = appStatus;
+		this.estBankDetails = estBankDetails;
+		this.estAddress = estAddress;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public Establishment() {}
 	
 }
 

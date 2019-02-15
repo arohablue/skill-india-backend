@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.skillindia.datajpa.Account;
+import com.skillindia.datajpa.LoginRepository;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 import com.skillindia.datajpa.establishment.model.Establishment;
@@ -14,19 +17,14 @@ public class EstablishmentService {
 	 
 	@Autowired
 	private EstablishmentRepository establishmentRepository;
+	@Autowired
+	private LoginRepository loginRepository;
 	
-	
-	public void addEstablishment(Establishment est) {
-
-		establishmentRepository.save(est); 				
-
-	}
-	
-	
-	public Establishment login(String username , String Password) {
-
-		Establishment est = establishmentRepository.findByEstUserIdAndEstUserPassword(username, Password);
-		return est;
+	public void addEstablishment(Account acc) {
+		for(Establishment o : acc.getEstablishments()) {
+			o.setAccount(acc);
+		}
+		loginRepository.save(acc);
 	}
 
 	public List<Establishment> getAllEstablishments() {
@@ -34,7 +32,8 @@ public class EstablishmentService {
 	}
 	
 	public List<Establishment> establishmentListByCandidate(Candidate candidate) {
-		return establishmentRepository.findAllByCandidate(candidate);
+		//return establishmentRepository.findAllByCandidate(candidate);
+		return null;
 	}
 
 }

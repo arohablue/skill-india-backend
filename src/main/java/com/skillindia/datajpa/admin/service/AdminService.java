@@ -17,11 +17,6 @@ import com.skillindia.datajpa.admin.respository.adminrepository;
 				impl.save(admin);
 		}
 		
-		public Admin login(String username , String password) {
-			Admin admin = impl.findByAdminUserNameAndAdminPassword(username, password);
-			
-			return admin;
-		}
 
 	}
 

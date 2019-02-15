@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.skillindia.datajpa.Account;
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.establishment.model.Establishment;
 import com.skillindia.datajpa.establishment.service.EstablishmentService;
 import com.skillindia.datajpa.message.model.Message;
 
-@Controller
+@RestController
 @CrossOrigin
 public class EstablishmentController {
 
@@ -28,19 +30,10 @@ public class EstablishmentController {
 		this.esService = establishmentServiceObject;
 	}
 	
-	@RequestMapping(value = "/addEstablishment", method = RequestMethod.POST)
-	public Message  addEstablishment(@RequestBody Establishment est) {
-		esService.addEstablishment(est);
-		return new Message("recordes added");
-	} 
-	
-	@RequestMapping(value = "/loginEstablishment", method = RequestMethod.GET)
-	@ResponseBody
-	public Message loginEstablishment( @RequestParam("username") String username , @RequestParam("password") String password) {
-		if(esService.login(username, password) != null) {
-			return new Message("success");
-		}
-		return new Message("failure");
+	@RequestMapping(value = "/add/establishment", method = RequestMethod.POST)
+	public Message addEstablishment(@RequestBody Account acc) {
+		esService.addEstablishment(acc);
+		return new Message("sccuess");
 	} 
 	
 	@RequestMapping(value = "/establishmentList", method = RequestMethod.GET)

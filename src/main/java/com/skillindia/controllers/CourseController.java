@@ -16,6 +16,7 @@ import com.skillindia.datajpa.establishment.model.Establishment;
 import com.skillindia.datajpa.message.model.Message;
 
 @Controller
+@CrossOrigin
 public class CourseController {
 	
 		@Autowired

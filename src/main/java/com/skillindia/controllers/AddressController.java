@@ -11,6 +11,7 @@ import com.skillindia.datajpa.address.service.AddressService;
 import com.skillindia.datajpa.message.model.Message;
 
 @Controller
+@CrossOrigin
 public class AddressController {
 
 		@Autowired

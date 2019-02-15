@@ -15,6 +15,7 @@ import com.skillindia.datajpa.message.model.Message;
 
 
 @Controller
+@CrossOrigin
 public class AdminController {
 	
 	@Autowired
@@ -25,21 +26,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
-	@CrossOrigin
 	public String  addCandidate (@RequestBody Admin admin) {
 		adminService.addAdmin(admin);
 		return "records added successfully";
 	}
 	
-	@RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
-	@CrossOrigin
-	@ResponseBody
-	public Message loginCandidate( @RequestParam(name="adminUserName",required=false) String username , @RequestParam(name="adminPassword",required=false) String password) {
-		if(adminService.login(username, password) != null) {
-			return new Message("1");
-		}
-		return new Message("0");
-	} 
-
-
 }

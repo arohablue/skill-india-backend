@@ -4,14 +4,21 @@ package com.skillindia.datajpa.admin.model;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.skillindia.datajpa.Account;
 
 @Entity
 @Table(name = "tbl_admin")
@@ -24,39 +31,39 @@ public class Admin  implements Serializable{
 		private int adminId;
 		
 		private String adminName;
-		
-		private String adminUserName;
-		
-		private String adminPassword;
-		
-		
+
 		@Column
 		@NotEmpty(message = "Phone Number cannot be empty!")
 		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
 		private String adminContactNumber;
+		
+		 @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+		 @JoinColumn(name = "account_id")
+		 @JsonIgnore
+		 private Account account;
 
+		public int getAdminId() {
+			return adminId;
+		}
+		public void setAdminId(int adminId) {
+			this.adminId = adminId;
+		}
+		public Account getAccount() {
+			return account;
+		}
+		public void setAccount(Account account) {
+			this.account = account;
+		}
 		private String adminGender;
 
 		private String adminEmaiIId;
 		
-
+		
 		public String getAdminName() {
 			return adminName;
 		}
 		public void setAdminName(String adminName) {
 			this.adminName = adminName;
-		}
-		public String getAdminUserName() {
-			return adminUserName;
-		}
-		public void setAdminUserName(String adminUserName) {
-			this.adminUserName = adminUserName;
-		}
-		public String getAdminPassword() {
-			return adminPassword;
-		}
-		public void setAdminPassword(String adminPassword) {
-			this.adminPassword = adminPassword;
 		}
 		public String getAdminContactNumber() {
 			return adminContactNumber;
@@ -79,13 +86,21 @@ public class Admin  implements Serializable{
 		public static long getSerialversionuid() {
 			return serialVersionUID;
 		}
-		@Override
-		public String toString() {
-			return "Admin [adminName=" + adminName + ", adminUserName=" + adminUserName + ", adminPassword="
-					+ adminPassword + ", adminContactNumber=" + adminContactNumber + ", adminGender=" + adminGender
-					+ ", adminEmaiIId=" + adminEmaiIId + "]";
+		public Admin(int adminId, String adminName,
+				@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String adminContactNumber,
+				String adminGender, String adminEmaiIId) {
+			super();
+			this.adminId = adminId;
+			this.adminName = adminName;
+			this.adminContactNumber = adminContactNumber;
+			this.adminGender = adminGender;
+			this.adminEmaiIId = adminEmaiIId;
 		}
-	
+		
+		public Admin() {
+			
+		}
+
 }
 
 
