@@ -26,6 +26,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
+	@ResponseBody
 	public String  addCandidate (@RequestBody Admin admin) {
 		adminService.addAdmin(admin);
 		return "records added successfully";

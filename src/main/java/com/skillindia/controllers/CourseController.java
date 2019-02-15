@@ -28,6 +28,7 @@ public class CourseController {
 		
 		@RequestMapping(value = "/addcourse", method = RequestMethod.POST)
 		@CrossOrigin
+		@ResponseBody
 		public Message  addCandidate (@RequestBody Course course) {
 			courseService.addCourse(course);
 			return new Message("success");

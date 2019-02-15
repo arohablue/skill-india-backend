@@ -43,7 +43,6 @@ public class EstablishmentController {
 	}
 	
 	@RequestMapping(value = "/establishmentListByCandidate", method = RequestMethod.GET)
-	
 	@ResponseBody
 	public List<Establishment> establishmentListByCandidate(@RequestBody Candidate candidate) {
 		return esService.establishmentListByCandidate(candidate);

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillindia.datajpa.Account;
@@ -21,6 +22,7 @@ public class LoginController  {
 	private LoginRepository loginRepository;
 	
 	@RequestMapping(value = "/account/add", method = RequestMethod.POST)
+	@ResponseBody
 	public Account  addAccount(@RequestBody Account acc) {
 		Account acct = loginRepository.save(acc);
 		return acct;
@@ -28,12 +30,13 @@ public class LoginController  {
 	
 	
 	@RequestMapping(value = "account/login", method = RequestMethod.POST)
-	public Account  addEstablishment(@RequestBody Account acc) {
+	@ResponseBody
+	public String  addEstablishment(@RequestBody Account acc) {
 			Account acct = loginRepository.findByusernameAndPassword(acc.getUsername(), acc.getPassword());
 		if( acct!= null) {
-			return acct;
+			return "fone";
 		}
-		return null;
+		return "not done";
 	} 
 
 }

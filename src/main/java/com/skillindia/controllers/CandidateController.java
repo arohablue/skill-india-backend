@@ -31,9 +31,17 @@ public class CandidateController {
 	}
 
 	@RequestMapping(value = "/candidate/register", method = RequestMethod.POST)
+	@ResponseBody
 	public Message  candidateRegister(@RequestBody Account acc) {
 		candidateService.addCandidate(acc);
-		return new Message("hello from");
+		return new Message("added");
+	} 
+	
+	@RequestMapping(value = "/candidate/add", method = RequestMethod.POST)
+	@ResponseBody
+	public Message  candidateAdd(@RequestBody Candidate cc) {
+		candidateService.addCandidate(cc);
+		return new Message("added");
 	} 
 	
 

@@ -28,10 +28,16 @@ public class CandidateService {
 			o.setAccount(acc);
 		}
 		loginRepository.save(acc);
+		
+	}
+	
+	public void addCandidate(Candidate cc) {
+		candidateRepository.save(cc);
 	}
 	
 	public List<Candidate> candidateListByEstablishment() {
 		return candidateRepository.findAll();
+		
 	}
 
 }
