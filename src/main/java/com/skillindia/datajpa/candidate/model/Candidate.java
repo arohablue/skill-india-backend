@@ -66,7 +66,16 @@ public class Candidate implements Serializable {
 
 	private String candidateRequestStatus = "PENDING";
 
-	private String candidateCourseStatus;
+	private String fathersName;
+	
+	private String motherName;
+	
+	private String instituteName;
+	
+	private String percentage;
+	
+	private String qualification;
+	
 
 	public Candidate() {
 
@@ -153,10 +162,6 @@ public class Candidate implements Serializable {
 		this.candidateRequestStatus = candidateRequestStatus;
 	}
 
-	public String getCandidateCourseStatus() {
-		return candidateCourseStatus;
-	}
-
 	public Candidate(int candidateId, String candidateName, Account account,
 			@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String candidateContactNumber,
 			String candidateGender, String candidateAadhaarNumber, String candidateEmaiI,
@@ -173,7 +178,6 @@ public class Candidate implements Serializable {
 		this.candidateEducationDetails = candidateEducationDetails;
 		this.candidateDoB = candidateDoB;
 		this.candidateRequestStatus = candidateRequestStatus;
-		this.candidateCourseStatus = candidateCourseStatus;
 		this.bankDetails = bankDetails;
 		this.address = address;
 	}
@@ -194,22 +198,61 @@ public class Candidate implements Serializable {
 		this.address = address;
 	}
 
-	public void setCandidateCourseStatus(String candidateCourseStatus) {
-		this.candidateCourseStatus = candidateCourseStatus;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getMotherName() {
+		return motherName;
+	}
+
+	public void setMotherName(String motherName) {
+		this.motherName = motherName;
+	}
+
+	public String getInstituteName() {
+		return instituteName;
+	}
+
+	public void setInstituteName(String instituteName) {
+		this.instituteName = instituteName;
+	}
+
+	public String getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(String percentage) {
+		this.percentage = percentage;
+	}
+
+	public String getQualification() {
+		return qualification;
+	}
+
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
 	}
 
 	@Override
 	public String toString() {
 		return "Candidate [candidateId=" + candidateId + ", candidateName=" + candidateName + ", account=" + account
 				+ ", bankDetails=" + bankDetails + ", address=" + address + ", candidateContactNumber="
-				+ candidateContactNumber + ", candidateGender=" + candidateGender + ", candidateAadharNumber="
+				+ candidateContactNumber + ", candidateGender=" + candidateGender + ", candidateAadhaarNumber="
 				+ candidateAadhaarNumber + ", candidateEmaiI=" + candidateEmaiI + ", candidateEducationDetails="
 				+ candidateEducationDetails + ", candidateDoB=" + candidateDoB + ", candidateRequestStatus="
-				+ candidateRequestStatus + ", candidateCourseStatus=" + candidateCourseStatus + "]";
+				+ candidateRequestStatus + ", fathersName=" + fathersName + ", motherName=" + motherName
+				+ ", instituteName=" + instituteName + ", percentage=" + percentage + ", qualification=" + qualification
+				+ "]";
 	}
+
 
 }

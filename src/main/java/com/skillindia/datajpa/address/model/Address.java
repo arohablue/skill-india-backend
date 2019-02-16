@@ -29,11 +29,9 @@ public class Address {
 	private int addressId;
 
 	@Column
-	@NotEmpty(message = "Address cannot be empty")
-	private String localAddress;
+	private String streetName;
 
 	@Column
-	@NotEmpty(message = "City cannot be empty!")
 	private String city;
 
 	@Column
@@ -78,11 +76,11 @@ public class Address {
 	}
 
 	public String getLocalAddress() {
-		return localAddress;
+		return streetName;
 	}
 
 	public void setLocalAddress(String localAddress) {
-		this.localAddress = localAddress;
+		this.streetName = localAddress;
 	}
 
 	public String getCity() {
@@ -103,8 +101,9 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", localAddress=" + localAddress + ", city=" + city + ", state="
-				+ state + ", candidate=" + candidate + ", establishment=" + establishment + "]";
+		return "Address [addressId=" + addressId + ", streetName=" + streetName + ", city=" + city + ", state=" + state
+				+ ", candidate=" + candidate + ", establishment=" + establishment + "]";
 	}
 
+	
 }

@@ -33,6 +33,7 @@ public class CandidateController {
 	@RequestMapping(value = "/candidate/register", method = RequestMethod.POST)
 	@ResponseBody
 	public Message candidateRegister(@RequestBody Account acc) {
+		System.out.println(acc);
 		candidateService.addCandidate(acc);
 		return new Message("added");
 	}
