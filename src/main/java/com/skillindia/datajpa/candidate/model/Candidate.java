@@ -56,7 +56,7 @@ public class Candidate implements Serializable {
 
 	private String candidateGender;
 
-	private String candidateAadharNumber;
+	private String candidateAadhaarNumber;
 
 	private String candidateEmaiI;
 
@@ -113,12 +113,12 @@ public class Candidate implements Serializable {
 		this.candidateGender = candidateGender;
 	}
 
-	public String getCandidateAadharNumber() {
-		return candidateAadharNumber;
+	public String getCandidateAadhaarNumber() {
+		return candidateAadhaarNumber;
 	}
 
-	public void setCandidateAadharNumber(String candidateAadharNumber) {
-		this.candidateAadharNumber = candidateAadharNumber;
+	public void setCandidateAadhaarNumber(String candidateAadhaarNumber) {
+		this.candidateAadhaarNumber = candidateAadhaarNumber;
 	}
 
 	public String getCandidateEmaiI() {
@@ -159,7 +159,7 @@ public class Candidate implements Serializable {
 
 	public Candidate(int candidateId, String candidateName, Account account,
 			@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String candidateContactNumber,
-			String candidateGender, String candidateAadharNumber, String candidateEmaiI,
+			String candidateGender, String candidateAadhaarNumber, String candidateEmaiI,
 			String candidateEducationDetails, Date candidateDoB, String candidateRequestStatus,
 			String candidateCourseStatus, BankDetails bankDetails, Address address) {
 		super();
@@ -168,7 +168,7 @@ public class Candidate implements Serializable {
 		this.account = account;
 		this.candidateContactNumber = candidateContactNumber;
 		this.candidateGender = candidateGender;
-		this.candidateAadharNumber = candidateAadharNumber;
+		this.candidateAadhaarNumber = candidateAadhaarNumber;
 		this.candidateEmaiI = candidateEmaiI;
 		this.candidateEducationDetails = candidateEducationDetails;
 		this.candidateDoB = candidateDoB;
@@ -207,7 +207,7 @@ public class Candidate implements Serializable {
 		return "Candidate [candidateId=" + candidateId + ", candidateName=" + candidateName + ", account=" + account
 				+ ", bankDetails=" + bankDetails + ", address=" + address + ", candidateContactNumber="
 				+ candidateContactNumber + ", candidateGender=" + candidateGender + ", candidateAadharNumber="
-				+ candidateAadharNumber + ", candidateEmaiI=" + candidateEmaiI + ", candidateEducationDetails="
+				+ candidateAadhaarNumber + ", candidateEmaiI=" + candidateEmaiI + ", candidateEducationDetails="
 				+ candidateEducationDetails + ", candidateDoB=" + candidateDoB + ", candidateRequestStatus="
 				+ candidateRequestStatus + ", candidateCourseStatus=" + candidateCourseStatus + "]";
 	}
