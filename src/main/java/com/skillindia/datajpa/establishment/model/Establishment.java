@@ -10,12 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.skillindia.datajpa.Account;
+import com.skillindia.datajpa.address.model.Address;
+import com.skillindia.datajpa.bankdetails.model.BankDetails;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 
@@ -32,12 +36,33 @@ public class Establishment implements Serializable{
 	
 	private String estName;
 	
-	 @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+	 @OneToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
 	 @JoinColumn(name = "account_id")
 	 @JsonIgnore
 	 private Account account;
 	 
-	 @Column
+	 @OneToOne(fetch = FetchType.EAGER,mappedBy = "establishment",cascade= CascadeType.ALL)
+	 private BankDetails bankDetails;
+	 
+	@OneToOne(fetch = FetchType.EAGER,	mappedBy = "establishment",cascade= CascadeType.ALL)
+	 private Address address;
+	 
+	 public BankDetails getBankDetails() {
+		return bankDetails;
+	}
+
+	public void setBankDetails(BankDetails bankDetails) {
+		this.bankDetails = bankDetails;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	@Column
 		@NotEmpty(message = "Phone Number cannot be empty!")
 		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
 		private String estContactNumber;
@@ -46,7 +71,7 @@ public class Establishment implements Serializable{
 		
 		private String estRegNo;
 		
-		private String estEmaiIId;
+		private String estEmaiI;
 		
 		private int workingDays;
 		
@@ -54,9 +79,6 @@ public class Establishment implements Serializable{
 		
 		private String appStatus="PENDING";
 		
-		private String estBankDetails;
-		
-		private String estAddress;
 
 	public Account getAccount() {
 		return account;
@@ -108,12 +130,12 @@ public class Establishment implements Serializable{
 		this.estRegNo = estRegNo;
 	}
 
-	public String getEstEmaiIId() {
-		return estEmaiIId;
+	public String getEstEmaiI() {
+		return estEmaiI;
 	}
 
-	public void setEstEmaiIId(String estEmaiIId) {
-		this.estEmaiIId = estEmaiIId;
+	public void setEstEmaiI(String estEmaiI) {
+		this.estEmaiI = estEmaiI;
 	}
 
 	public int getWorkingDays() {
@@ -140,40 +162,13 @@ public class Establishment implements Serializable{
 		this.appStatus = appStatus;
 	}
 
-	public String getEstBankDetails() {
-		return estBankDetails;
-	}
 
-	public void setEstBankDetails(String estBankDetails) {
-		this.estBankDetails = estBankDetails;
-	}
-
-	public String getEstAddress() {
-		return estAddress;
-	}
-
-	public void setEstAddress(String estAddress) {
-		this.estAddress = estAddress;
-	}
-
-	
-	public Establishment(int estId, String estUserId, String estUserPassword, String estName, Account account,
-			@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String estContactNumber,
-			String estType, String estRegNo, String estEmaiIId, int workingDays, String domain, String appStatus,
-			String estBankDetails, String estAddress, Candidate candidate) {
-		super();
-		this.estId = estId;
-		this.estName = estName;
-		this.account = account;
-		this.estContactNumber = estContactNumber;
-		this.estType = estType;
-		this.estRegNo = estRegNo;
-		this.estEmaiIId = estEmaiIId;
-		this.workingDays = workingDays;
-		this.domain = domain;
-		this.appStatus = appStatus;
-		this.estBankDetails = estBankDetails;
-		this.estAddress = estAddress;
+	@Override
+	public String toString() {
+		return "Establishment [estId=" + estId + ", estName=" + estName + ", account=" + account + ", bankDetails="
+				+ bankDetails + ", address=" + address + ", estContactNumber=" + estContactNumber + ", estType="
+				+ estType + ", estRegNo=" + estRegNo + ", estEmaiI=" + estEmaiI + ", workingDays=" + workingDays
+				+ ", domain=" + domain + ", appStatus=" + appStatus + "]";
 	}
 
 	public static long getSerialversionuid() {

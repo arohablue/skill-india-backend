@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.skillindia.datajpa.Account;
 import com.skillindia.datajpa.LoginRepository;
+import com.skillindia.datajpa.address.model.Address;
+import com.skillindia.datajpa.bankdetails.model.BankDetails;
 import com.skillindia.datajpa.candidate.model.Candidate;
 
 import com.skillindia.datajpa.establishment.model.Establishment;
@@ -21,10 +23,17 @@ public class EstablishmentService {
 	private LoginRepository loginRepository;
 	
 	public void addEstablishment(Account acc) {
-		for(Establishment o : acc.getEstablishments()) {
-			o.setAccount(acc);
-		}
+		Establishment est  = acc.getEstablishment();
+		est.setAccount(acc);
+		Address ad = est.getAddress();
+		ad.setEstablishment(est);
+		BankDetails bankd = est.getBankDetails();
+		bankd.setEstablishment(est);
 		loginRepository.save(acc);
+	}
+	
+	public void addEstablishment(Establishment acc) {
+		establishmentRepository.save(acc);
 	}
 
 	public List<Establishment> getAllEstablishments() {

@@ -1,14 +1,24 @@
 package com.skillindia.datajpa.address.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-@Table(name="tbl_addressdetails")
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.skillindia.datajpa.candidate.model.Candidate;
+import com.skillindia.datajpa.establishment.model.Establishment;
+
+@Table(name = "tbl_addressdetails")
 @Entity
 public class Address {
 
@@ -21,13 +31,39 @@ public class Address {
 	@Column
 	@NotEmpty(message = "Address cannot be empty")
 	private String localAddress;
-	
+
 	@Column
 	@NotEmpty(message = "City cannot be empty!")
 	private String city;
 
 	@Column
 	private String state;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "candidate_id")
+	@JsonIgnore
+	private Candidate candidate;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "establishment_id")
+	@JsonIgnore
+	private Establishment establishment;
+
+	public Candidate getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
+	}
+
+	public Establishment getEstablishment() {
+		return establishment;
+	}
+
+	public void setEstablishment(Establishment establishment) {
+		this.establishment = establishment;
+	}
 
 	public Address() {
 		super();
@@ -65,11 +101,10 @@ public class Address {
 		this.state = state;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return "Address [addressId=" + addressId + ", localAddress=" + localAddress + ", city=" + city + ", state="
-				+ state + "]";
+				+ state + ", candidate=" + candidate + ", establishment=" + establishment + "]";
 	}
+
 }

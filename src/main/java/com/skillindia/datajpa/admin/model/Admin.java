@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -37,7 +39,7 @@ public class Admin  implements Serializable{
 		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
 		private String adminContactNumber;
 		
-		 @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+		 @OneToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
 		 @JoinColumn(name = "account_id")
 		 @JsonIgnore
 		 private Account account;

@@ -32,18 +32,18 @@ public class CandidateController {
 
 	@RequestMapping(value = "/candidate/register", method = RequestMethod.POST)
 	@ResponseBody
-	public Message  candidateRegister(@RequestBody Account acc) {
+	public Message candidateRegister(@RequestBody Account acc) {
 		candidateService.addCandidate(acc);
 		return new Message("added");
-	} 
-	
+	}
+
 	@RequestMapping(value = "/candidate/add", method = RequestMethod.POST)
 	@ResponseBody
-	public Message  candidateAdd(@RequestBody Candidate cc) {
+	public Message candidateAdd(@RequestBody Account cc) {
+		System.out.println(cc);
 		candidateService.addCandidate(cc);
 		return new Message("added");
-	} 
-	
+	}
 
 	@RequestMapping(value = "/candidateList", method = RequestMethod.GET)
 	@ResponseBody
