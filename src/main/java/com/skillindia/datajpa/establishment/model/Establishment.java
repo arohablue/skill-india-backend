@@ -78,7 +78,7 @@ public class Establishment implements Serializable{
 		public void setEstEmail(String estEmail) {
 			this.estEmail = estEmail;
 		}
-		private int workingDays;
+		private int WorkingDays;
 		
 		private String domain;
 		
@@ -127,13 +127,7 @@ public class Establishment implements Serializable{
 		this.estType = estType;
 	}
 
-	public int getWorkingDays() {
-		return workingDays;
-	}
 
-	public void setWorkingDays(int workingDays) {
-		this.workingDays = workingDays;
-	}
 
 	public String getDomain() {
 		return domain;
@@ -153,13 +147,6 @@ public class Establishment implements Serializable{
 
 
 
-	@Override
-	public String toString() {
-		return "Establishment [estId=" + estId + ", estName=" + estName + ", account=" + account + ", bankDetails="
-				+ bankDetails + ", address=" + address + ", estContactNumber=" + estContactNumber + ", estType="
-				+ estType + ", estEmail=" + estEmail + ", workingDays=" + workingDays + ", domain=" + domain
-				+ ", appStatus=" + appStatus + "]";
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

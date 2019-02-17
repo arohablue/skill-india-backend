@@ -15,11 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @CrossOrigin
 public class DocUplaodController {
-	public static String uploadDirectory = System.getProperty("user.dir") + "/uploads";
-
+	public static String uploadDirectory = System.getProperty("user.dir") ;
+	
 	@RequestMapping(path = "/upload", consumes = "multipart/form-data")
 	public String upload(Model model, @RequestParam("image") MultipartFile[] files) {
 		StringBuilder fileNames = new StringBuilder();
+		
+		
 		for (MultipartFile file : files) {
 			Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
 			fileNames.append(file.getOriginalFilename());
