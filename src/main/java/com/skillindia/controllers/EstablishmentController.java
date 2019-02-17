@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skillindia.datajpa.Account;
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.establishment.model.Establishment;
+import com.skillindia.datajpa.establishment.repository.EstablishmentRepository;
 import com.skillindia.datajpa.establishment.service.EstablishmentService;
 import com.skillindia.datajpa.message.model.Message;
 
@@ -25,6 +26,8 @@ public class EstablishmentController {
 
 	@Autowired
 	EstablishmentService esService;
+	@Autowired
+	EstablishmentRepository establishmentRepository;
 
 	public void setEstablishmentServiceObject(EstablishmentService establishmentServiceObject) {
 		this.esService = establishmentServiceObject;
@@ -33,7 +36,7 @@ public class EstablishmentController {
 	@RequestMapping(value = "/add/establishment", method = RequestMethod.POST)
 	public Message addEstablishment(@RequestBody Account acc) {
 		esService.addEstablishment(acc);
-		return new Message("sccuess");
+		return new Message("added");
 	} 
 	
 	@RequestMapping(value = "/establishmentList", method = RequestMethod.GET)
@@ -47,4 +50,12 @@ public class EstablishmentController {
 	public List<Establishment> establishmentListByCandidate(@RequestBody Candidate candidate) {
 		return esService.establishmentListByCandidate(candidate);
 	}
+	
+	
+	@RequestMapping(value = "/establishment/byid", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Candidate> candidateListByID(@RequestParam("estid") int estid) {
+		return establishmentRepository.findAllByestId(estid);
+	}
+
 }

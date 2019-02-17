@@ -13,6 +13,7 @@ import com.skillindia.datajpa.candidate.model.Candidate;
 public interface CandidateRepository extends CrudRepository<Candidate, Long>{
 	
 	List<Candidate> findAll();
+	List<Candidate> findAllBycandidateId(int id);
 	Candidate findByAccount(Account acc);
 	
 }

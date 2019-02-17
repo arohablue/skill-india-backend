@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skillindia.datajpa.Account;
 import com.skillindia.datajpa.LoginRepository;
 import com.skillindia.datajpa.candidate.model.Candidate;
+import com.skillindia.datajpa.candidate.repository.CandidateRepository;
 import com.skillindia.datajpa.candidate.service.CandidateService;
+import com.skillindia.datajpa.establishment.repository.EstablishmentRepository;
 import com.skillindia.datajpa.message.model.Message;
 
 @RestController
@@ -24,7 +26,13 @@ public class CandidateController {
 
 	@Autowired
 	CandidateService candidateService;
+	@Autowired
 	LoginRepository loginRepository;
+	@Autowired
+	EstablishmentRepository establishmentRepository;
+	@Autowired
+	CandidateRepository candidateRepository;
+	
 
 	public void setCandidateServiceObject(CandidateService candidateServiceObject) {
 		this.candidateService = candidateServiceObject;
@@ -32,18 +40,9 @@ public class CandidateController {
 
 	@RequestMapping(value = "/candidate/register", method = RequestMethod.POST)
 	@ResponseBody
-	public Message candidateRegister(@RequestBody Account acc) {
-		System.out.println(acc);
-		candidateService.addCandidate(acc);
-		return new Message("added");
-	}
-
-	@RequestMapping(value = "/candidate/add", method = RequestMethod.POST)
-	@ResponseBody
-	public Message candidateAdd(@RequestBody Account cc) {
-		System.out.println(cc);
-		candidateService.addCandidate(cc);
-		return new Message("added");
+	public Account candidateRegister(@RequestBody Account acc) {
+		Account cc = candidateService.addCandidate(acc);
+		return cc;
 	}
 
 	@RequestMapping(value = "/candidateList", method = RequestMethod.GET)
@@ -51,4 +50,12 @@ public class CandidateController {
 	public List<Candidate> candidateListByEstablishment() {
 		return candidateService.candidateListByEstablishment();
 	}
+	
+	@RequestMapping(value = "/candidate/byid", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Candidate> candidateListByID(@RequestParam("canId") int canID) {
+		return candidateRepository.findAllBycandidateId(canID);
+	}
+
+	
 }

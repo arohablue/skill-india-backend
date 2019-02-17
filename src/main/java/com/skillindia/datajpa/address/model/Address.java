@@ -75,13 +75,6 @@ public class Address {
 		this.addressId = addressId;
 	}
 
-	public String getLocalAddress() {
-		return streetName;
-	}
-
-	public void setLocalAddress(String localAddress) {
-		this.streetName = localAddress;
-	}
 
 	public String getCity() {
 		return city;

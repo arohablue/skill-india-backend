@@ -21,12 +21,13 @@ public class CandidateService {
 	@Autowired
 	private LoginRepository loginRepository;
 
-	public void addCandidate(Account acc) {
+	public Account addCandidate(Account acc) {
 		Candidate cnd = acc.getCandidate();
 		cnd.setAccount(acc);
 		Address add = cnd.getAddress();
 		add.setCandidate(cnd);
-		loginRepository.save(acc);
+		Account  ac =loginRepository.save(acc);
+		return ac;
 
 	}
 

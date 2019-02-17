@@ -69,10 +69,15 @@ public class Establishment implements Serializable{
 
 		private String estType;
 		
-		private String estRegNo;
+		private String estEmail;
 		
-		private String estEmaiI;
-		
+		public String getEstEmail() {
+			return estEmail;
+		}
+
+		public void setEstEmail(String estEmail) {
+			this.estEmail = estEmail;
+		}
 		private int workingDays;
 		
 		private String domain;
@@ -122,22 +127,6 @@ public class Establishment implements Serializable{
 		this.estType = estType;
 	}
 
-	public String getEstRegNo() {
-		return estRegNo;
-	}
-
-	public void setEstRegNo(String estRegNo) {
-		this.estRegNo = estRegNo;
-	}
-
-	public String getEstEmaiI() {
-		return estEmaiI;
-	}
-
-	public void setEstEmaiI(String estEmaiI) {
-		this.estEmaiI = estEmaiI;
-	}
-
 	public int getWorkingDays() {
 		return workingDays;
 	}
@@ -163,12 +152,13 @@ public class Establishment implements Serializable{
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Establishment [estId=" + estId + ", estName=" + estName + ", account=" + account + ", bankDetails="
 				+ bankDetails + ", address=" + address + ", estContactNumber=" + estContactNumber + ", estType="
-				+ estType + ", estRegNo=" + estRegNo + ", estEmaiI=" + estEmaiI + ", workingDays=" + workingDays
-				+ ", domain=" + domain + ", appStatus=" + appStatus + "]";
+				+ estType + ", estEmail=" + estEmail + ", workingDays=" + workingDays + ", domain=" + domain
+				+ ", appStatus=" + appStatus + "]";
 	}
 
 	public static long getSerialversionuid() {

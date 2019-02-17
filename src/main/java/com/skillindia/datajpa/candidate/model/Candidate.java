@@ -34,8 +34,7 @@ public class Candidate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int candidateId;
-
-	@Column(unique = true)
+	
 	private String candidateName;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -58,9 +57,7 @@ public class Candidate implements Serializable {
 
 	private String candidateAadhaarNumber;
 
-	private String candidateEmaiI;
-
-	private String candidateEducationDetails;
+	private String candidateEmail;
 
 	private Date candidateDoB;
 
@@ -130,22 +127,6 @@ public class Candidate implements Serializable {
 		this.candidateAadhaarNumber = candidateAadhaarNumber;
 	}
 
-	public String getCandidateEmaiI() {
-		return candidateEmaiI;
-	}
-
-	public void setCandidateEmaiI(String candidateEmaiI) {
-		this.candidateEmaiI = candidateEmaiI;
-	}
-
-	public String getCandidateEducationDetails() {
-		return candidateEducationDetails;
-	}
-
-	public void setCandidateEducationDetails(String candidateEducationDetails) {
-		this.candidateEducationDetails = candidateEducationDetails;
-	}
-
 	public Date getCandidateDoB() {
 		return candidateDoB;
 	}
@@ -162,24 +143,37 @@ public class Candidate implements Serializable {
 		this.candidateRequestStatus = candidateRequestStatus;
 	}
 
-	public Candidate(int candidateId, String candidateName, Account account,
+
+	public String getCandidateEmail() {
+		return candidateEmail;
+	}
+
+	public void setCandidateEmail(String candidateEmail) {
+		this.candidateEmail = candidateEmail;
+	}
+
+	public Candidate(int candidateId, String candidateName, Account account, BankDetails bankDetails, Address address,
 			@NotEmpty(message = "Phone Number cannot be empty!") @Size(max = 10, min = 10, message = "Phone Number Should be 10 number long") String candidateContactNumber,
-			String candidateGender, String candidateAadhaarNumber, String candidateEmaiI,
-			String candidateEducationDetails, Date candidateDoB, String candidateRequestStatus,
-			String candidateCourseStatus, BankDetails bankDetails, Address address) {
+			String candidateGender, String candidateAadhaarNumber, String candidateEmail, Date candidateDoB,
+			String candidateRequestStatus, String fathersName, String motherName, String instituteName,
+			String percentage, String qualification) {
 		super();
 		this.candidateId = candidateId;
 		this.candidateName = candidateName;
 		this.account = account;
+		this.bankDetails = bankDetails;
+		this.address = address;
 		this.candidateContactNumber = candidateContactNumber;
 		this.candidateGender = candidateGender;
 		this.candidateAadhaarNumber = candidateAadhaarNumber;
-		this.candidateEmaiI = candidateEmaiI;
-		this.candidateEducationDetails = candidateEducationDetails;
+		this.candidateEmail = candidateEmail;
 		this.candidateDoB = candidateDoB;
 		this.candidateRequestStatus = candidateRequestStatus;
-		this.bankDetails = bankDetails;
-		this.address = address;
+		this.fathersName = fathersName;
+		this.motherName = motherName;
+		this.instituteName = instituteName;
+		this.percentage = percentage;
+		this.qualification = qualification;
 	}
 
 	public BankDetails getBankDetails() {
@@ -240,18 +234,6 @@ public class Candidate implements Serializable {
 
 	public void setQualification(String qualification) {
 		this.qualification = qualification;
-	}
-
-	@Override
-	public String toString() {
-		return "Candidate [candidateId=" + candidateId + ", candidateName=" + candidateName + ", account=" + account
-				+ ", bankDetails=" + bankDetails + ", address=" + address + ", candidateContactNumber="
-				+ candidateContactNumber + ", candidateGender=" + candidateGender + ", candidateAadhaarNumber="
-				+ candidateAadhaarNumber + ", candidateEmaiI=" + candidateEmaiI + ", candidateEducationDetails="
-				+ candidateEducationDetails + ", candidateDoB=" + candidateDoB + ", candidateRequestStatus="
-				+ candidateRequestStatus + ", fathersName=" + fathersName + ", motherName=" + motherName
-				+ ", instituteName=" + instituteName + ", percentage=" + percentage + ", qualification=" + qualification
-				+ "]";
 	}
 
 
