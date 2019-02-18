@@ -34,9 +34,6 @@ public class Admin  implements Serializable{
 		
 		private String adminName;
 
-		@Column
-		@NotEmpty(message = "Phone Number cannot be empty!")
-		@Size(max=10, min=10, message="Phone Number Should be 10 number long" )
 		private String adminContactNumber;
 		
 		 @OneToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)

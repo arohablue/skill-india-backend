@@ -14,6 +14,7 @@ public interface CandidateRepository extends CrudRepository<Candidate, Long>{
 	
 	List<Candidate> findAll();
 	List<Candidate> findAllBycandidateId(int id);
+	Candidate findBycandidateId(int id);
 	Candidate findByAccount(Account acc);
 	
 }

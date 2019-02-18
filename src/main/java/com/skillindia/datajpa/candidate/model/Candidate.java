@@ -22,6 +22,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.skillindia.datajpa.Account;
+import com.skillindia.datajpa.CandApplication;
 import com.skillindia.datajpa.address.model.Address;
 import com.skillindia.datajpa.bankdetails.model.BankDetails;
 

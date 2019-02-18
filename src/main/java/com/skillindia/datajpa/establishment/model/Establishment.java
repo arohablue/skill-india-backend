@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.skillindia.datajpa.Account;
+import com.skillindia.datajpa.CandApplication;
 import com.skillindia.datajpa.address.model.Address;
 import com.skillindia.datajpa.bankdetails.model.BankDetails;
 import com.skillindia.datajpa.candidate.model.Candidate;
@@ -46,8 +47,16 @@ public class Establishment implements Serializable{
 	 
 	@OneToOne(fetch = FetchType.EAGER,	mappedBy = "establishment",cascade= CascadeType.ALL)
 	 private Address address;
-	 
-	 public BankDetails getBankDetails() {
+
+	public int getWorkingDays() {
+		return WorkingDays;
+	}
+
+	public void setWorkingDays(int workingDays) {
+		WorkingDays = workingDays;
+	}
+
+	public BankDetails getBankDetails() {
 		return bankDetails;
 	}
 

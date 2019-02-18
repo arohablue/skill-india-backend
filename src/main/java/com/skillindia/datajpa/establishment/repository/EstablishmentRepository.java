@@ -15,6 +15,7 @@ import com.skillindia.datajpa.establishment.model.Establishment;
 public interface EstablishmentRepository extends CrudRepository<Establishment, Long> {
 	List<Establishment> findAll();
 	Establishment findByAccount(Account acc);
+	Establishment findByestId(int id);
 	List<Candidate> findAllByestId(int Id);
 	
 }

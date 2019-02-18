@@ -44,5 +44,10 @@ public class EstablishmentService {
 		//return establishmentRepository.findAllByCandidate(candidate);
 		return null;
 	}
+	
+	public Establishment establishmentFindByID(int id) {
+		return establishmentRepository.findByestId(id);
+
+	}
 
 }

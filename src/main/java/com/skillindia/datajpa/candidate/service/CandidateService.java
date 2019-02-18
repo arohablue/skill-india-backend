@@ -41,5 +41,10 @@ public class CandidateService {
 		return candidateRepository.findAll();
 
 	}
+	
+	public Candidate candidateFindByID(int id) {
+		return candidateRepository.findBycandidateId(id);
+
+	}
 
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillindia.datajpa.Account;
+import com.skillindia.datajpa.CanApplnRepo;
+import com.skillindia.datajpa.CandApplication;
 import com.skillindia.datajpa.LoginRepository;
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.candidate.repository.CandidateRepository;
@@ -32,6 +34,8 @@ public class CandidateController {
 	EstablishmentRepository establishmentRepository;
 	@Autowired
 	CandidateRepository candidateRepository;
+	@Autowired
+	CanApplnRepo canApplnRepo;
 	
 
 	public void setCandidateServiceObject(CandidateService candidateServiceObject) {
@@ -56,6 +60,5 @@ public class CandidateController {
 	public List<Candidate> candidateListByID(@RequestParam("canId") int canID) {
 		return candidateRepository.findAllBycandidateId(canID);
 	}
-
-	
+		
 }
