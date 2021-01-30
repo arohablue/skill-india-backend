@@ -38,7 +38,7 @@ public class EstablishmentController {
 			return "1";
 		}
 		return "0";
-<<<<<<< HEAD
+
 	} 
 	
 	@RequestMapping(value = "/dashboardEstablishment", method = RequestMethod.POST)
@@ -48,10 +48,9 @@ public class EstablishmentController {
 		System.out.println(est.getEstName());
 		System.out.println(est.getEstId());
 		System.out.println("hitted");
-		esService.dashboardDetails(est);
+		//esService.dashboardDetails(est);
 		
 		return "records Fetched successfully";
-=======
->>>>>>> develop
+
 	}
 }
