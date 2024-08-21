@@ -8,15 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-<<<<<<< HEAD
 import com.skillindia.datajpa.candidate.model.Candidate;
 import com.skillindia.datajpa.candidate.service.CandidateService;
 
-=======
 import com.skillindia.datajpa.candidate.candidateModel.Candidate;
 import com.skillindia.datajpa.candidate.candidateService.CandidateService;
->>>>>>> develop
 
 @Controller
 public class CandidateController {
